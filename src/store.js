@@ -12,12 +12,21 @@ export const initialStore=()=>{
         title: "Do my homework",
         background: null,
       }
-    ]
+    ],
+    characters: null, 
+    vehicles: null,
+    favorites: [],    
   }
 }
 
 export default function storeReducer(store, action = {}) {
   switch(action.type){
+    case 'set_hello':
+      return {
+        ...store,
+        message: action.payload
+      };
+      
     case 'add_task':
 
       const { id,  color } = action.payload
@@ -25,6 +34,22 @@ export default function storeReducer(store, action = {}) {
       return {
         ...store,
         todos: store.todos.map((todo) => (todo.id === id ? { ...todo, background: color } : todo))
+      };
+    case 'set_characters':
+
+      const { characters } = action.payload
+
+      return {
+        ...store,
+        characters: characters 
+      };
+    case 'set_favorites':
+
+      const { favorites } = action.payload
+
+      return {
+        ...store,
+        favorites : favorites
       };
     default:
       throw Error('Unknown action.');
