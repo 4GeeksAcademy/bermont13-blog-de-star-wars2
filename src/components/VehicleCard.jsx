@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import useGlobalReducer from "../hooks/useGlobalReducer";
 
-const PeopleCard = ({ name, uid }) => {
+const VehicleCard = ({ name, uid }) => {
     const { store, dispatch } = useGlobalReducer()
 
     //const isFavorite = person && store.favorites.some(fav => fav.name === person.name);
@@ -30,7 +30,7 @@ const PeopleCard = ({ name, uid }) => {
             style={{ width: "400px", height: "200px", overflow: "hidden", position: "relative" }}
         >
             <img
-                src={`https://raw.githubusercontent.com/breatheco-de/swapi-images/refs/heads/master/public/images/people/${uid}.jpg`}
+                src={`https://raw.githubusercontent.com/breatheco-de/swapi-images/refs/heads/master/public/images/vehicles/${uid}.jpg`}
                 alt={name}
                 style={{ width: "100%", height: "100%", objectFit: "cover" }}
                 onError={(e) => {
@@ -47,7 +47,7 @@ const PeopleCard = ({ name, uid }) => {
                     {/* Gender: {person.gender} | Hair: {person.hair_color} | Eyes: {person.eye_color} */}
                 </small>
                 <div className="d-flex justify-content-between align-items-center mt-1">
-                    <Link to={`/detail/character/${uid}`} className="btn btn-sm btn-primary">
+                    <Link to={`/detail/vehicle/${uid}`} className="btn btn-sm btn-primary">
                         Learn more!
                     </Link>
                     <button
@@ -69,6 +69,4 @@ const PeopleCard = ({ name, uid }) => {
     );
 };
 
-export default PeopleCard;
-
-
+export default VehicleCard;

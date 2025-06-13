@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 
-export const Single = () => {
-    const { id } = useParams();
+export const DetailCharacter = () => {
+    const { uid } = useParams();
     const [character, setCharacter] = useState(null);
 
     useEffect(() => {
         const fetchCharacter = async () => {
             try {
-                const res = await fetch(`https://www.swapi.tech/api/people/${id}`);
+                const res = await fetch(`https://www.swapi.tech/api/people/${uid}`);
                 const data = await res.json();
                 setCharacter(data.result.properties);
             } catch (error) {
@@ -17,18 +17,18 @@ export const Single = () => {
         };
 
         fetchCharacter();
-    }, [id]);
+    }, [uid]);
 
     return (
         <div className="container mt-5">
             <div className="row">
                 <div className="col-md-6">
                     <img
-                        src={`https://starwars-visualguide.com/assets/img/characters/${id}.jpg`}
+                        src={`https://raw.githubusercontent.com/breatheco-de/swapi-images/refs/heads/master/public/images/people/${uid}.jpg`}
                         className="img-fluid rounded shadow"
                         alt={character?.name}
                         onError={(e) => {
-                            e.target.src = "https://starwars-visualguide.com/assets/img/big-placeholder.jpg";
+                            e.target.src = "https://placehold.co/600x400?text=No+Image";
                         }}
                     />
                 </div>

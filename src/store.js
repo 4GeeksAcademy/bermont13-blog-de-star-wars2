@@ -43,6 +43,14 @@ export default function storeReducer(store, action = {}) {
         ...store,
         characters: characters 
       };
+    case 'set_vehicles':
+
+      const { vehicles } = action.payload
+
+      return {
+        ...store,
+        vehicles: vehicles 
+      };
     case 'set_favorites':
 
       const { favorites } = action.payload
@@ -53,5 +61,6 @@ export default function storeReducer(store, action = {}) {
       };
     default:
       throw Error('Unknown action.');
+      
   }    
 }
